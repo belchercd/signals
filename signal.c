@@ -11,7 +11,6 @@ time_t start, stop;
 
 void handler(int signum)
 { //signal handler
-  printf("Hello World!\n");
   sleep(1);
   
   trigger = 1;
@@ -47,12 +46,3 @@ int main(int argc, char * argv[])
  
   return 0; //never reached
 }
-/*int main(int argc, char * argv[])
-{
-  signal(SIGALRM,handler); //register handler to handle SIGALRM
-  //handler is invoked
-  alarm(1); //Schedule a SIGALRM for 1 second
-  while(1): //busy wait for signal to be delivered
-    printf("Turing was right!\n")
-  return 0; //never reached
-}*/
