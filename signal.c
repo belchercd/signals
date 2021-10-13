@@ -10,25 +10,24 @@ int count = 0;
 time_t start, stop;
 
 void handler(int signum)
-{ //signal handler
+{ 
   sleep(1);
   
   trigger = 1;
   
   count++;
   
-  //exit(1); //exit after printing
 }
-
 void handler_2(int signum){ 
   int total;
   
-  stop = time(NULL); //keep track of iterations
+  stop = time(NULL); //track iterations
   
   total = stop - start;
   
   printf("\nNumber of alarm: %d\n in seconds %d\n", count, total);
 }
+
 int main(int argc, char * argv[])
 {
   signal(SIGALRM,handler); //register handler to handle SIGALRM
@@ -36,13 +35,13 @@ int main(int argc, char * argv[])
   
   start = time(NULL);
   
-  while(1){//for true 
+  while(1){//while true 
     trigger = 0;
     alarm(1); //Schedule a SIGALRM for 1 second
      
-    while(!trigger);//busy wait for signal to be delivered
+    while(!trigger); //wait for signal to be delivered
       printf("Turing was right!\n");
   }
  
-  return 0; //never reached
+  return 0; 
 }
